@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name": "VideoDiaryApp",
+    "slug": "VideoDiaryApp",
+    "scheme": "VideoDiaryApp",
+    "version": "1.0.0",
+    "plugins": [
+      "expo-router",
+      "expo-video"
+    ]
+  },
+  "web": {
+    "bundler": "metro"
+  }
+}
