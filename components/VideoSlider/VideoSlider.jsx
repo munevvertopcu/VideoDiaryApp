@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Dimensions } from 'react-native';
+import { View, Text, TouchableOpacity, Dimensions, Platform } from 'react-native';
 import { useVideoPlayer, VideoView } from 'expo-video';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import { useEvent } from 'expo';
@@ -51,7 +51,7 @@ export default function VideoSlider({ duration, uri }) {
             <MultiSlider
                 values={[start, end]}
                 min={0}
-                max={duration / 1000}
+                max={Platform.OS == "web" ? duration : duration / 1000}
                 onValuesChange={handleValuesChange}
                 onValuesChangeFinish={() => player.pause()}
                 onValuesChangeStart={() => player.play()}

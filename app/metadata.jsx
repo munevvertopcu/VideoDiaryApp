@@ -23,7 +23,7 @@ export default function MetadataForm() {
 
     const handleCropAndSave = async () => {
         try {
-            if (name.length === 0 || description.length === 0) {
+            if (!name || !description) {
                 return setModalVisible(true)
             }
             const output = await cropVideo({ uri, start, end });

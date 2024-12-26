@@ -12,8 +12,8 @@ export default function CropModal() {
     const [loading, setLoading] = useState(false);
 
     const selectVideo = async () => {
-        setLoading(true);
         try {
+            setLoading(true);
             const result = await ImagePicker.launchImageLibraryAsync({ mediaTypes: "videos", allowsEditing: true });
             if (result.assets) setVideo(result.assets[0]);
         } catch (error) {
@@ -46,16 +46,16 @@ export default function CropModal() {
                     backgroundColor: 'white',
                 }}
             >
-
                 {
                     !video ?
                         <CommonButton title="Select a Video" onPress={selectVideo} />
-                        :
-                        <VideoSlider duration={video.duration} uri={video.uri} />
+                        : (
+                            loading ?
+                                <ActivityIndicator size="large" color="#DE6B48" /> :
+                                <VideoSlider duration={video.duration} uri={video.uri} />
+                        )
                 }
-                {
-                    loading && <ActivityIndicator size="large" color="#DE6B48" />
-                }
+
             </Animated.View>
         </Animated.View>
     );
